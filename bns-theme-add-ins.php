@@ -283,20 +283,11 @@ if ( ! function_exists( 'bns_changelog_text' ) ) {
  * @package: BNS Theme Add-Ins
  * @version: 0.1
  * @date: September 28, 2011
- * @revised: October 6, 2011
+ * @revised: October 7, 2011
  *
  * Note: Translation files are expected to be found in the plugin root folder / directory.
  */
-
-/* // exclude until corrected
-global $bns_lower_case;
-$bns_plugin_path = get_home_url() . '/wp-content/plugins/' . $bns_lower_case;
-load_plugin_textdomain( 'bns-theme-add-ins', $bns_plugin_path );
-$locale = get_locale();
-$locale_file = get_stylesheet_directory() . "/languages/$locale.php";
-if ( is_readable( $locale_file ) )
-    require_once( $locale_file );
-*/
+load_plugin_textdomain( 'bns-theme-add-ins' );
 // End: BNS Plugin TextDomain
 ?>
 <?php /* Last revised October 7, 2011 v0.2 */ ?>
