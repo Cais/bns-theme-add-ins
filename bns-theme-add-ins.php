@@ -295,6 +295,6 @@ $locale = get_locale();
 $locale_file = get_stylesheet_directory() . "/languages/$locale.php";
 if ( is_readable( $locale_file ) )
     require_once( $locale_file );
-/* End: Child-Theme Translation */
+// End: BNS Plugin TextDomain
 ?>
-<?php /* Last revised October 6, 2011 v0.2 */ ?>
+<?php /* Last revised October 7, 2011 v0.2 */ ?>
