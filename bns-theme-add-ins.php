@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: BNS Theme Add-Ins
-Plugin URI: http://buynowshop.com/plugins/
+Plugin URI: http://buynowshop.com/plugins/bns-theme-add-ins/
 Description: A collection of functions and code that can be used to extend the capabilities of WordPress Parent-Themes and Child-Themes.  
 Version: 0.2
 Author: Edward Caissie
@@ -14,12 +14,11 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * A collection of functions and code that can be used to extend the
  * capabilities of WordPress Themes and Child-Themes.
  * 
- * Add `BNS Extra Theme Headers`
- * Add `BNS Child-Theme Version Control`
- * Add `BNS Readme Menu Item`
- * Add `BNS Changelog Menu Item`  
- * Remove `BNS Child-Theme TextDomain` and i18n (translation) support
- * Add `BNS Plugin TextDomain` and i18n (translation) support specifically for 'bns-theme-add-ins'
+ * Adds `BNS Extra Theme Headers`
+ * Adds `BNS Child-Theme Version Control`
+ * Adds `BNS Readme Menu Item`
+ * Adds `BNS Changelog Menu Item`
+ * Adds `BNS Plugin TextDomain` and i18n (translation) support specifically for 'bns-theme-add-ins'
  * 
  * Initial Release: September 30, 2011  
  * 
@@ -83,7 +82,7 @@ if ( ! function_exists( 'bns_extra_theme_headers' ) ){
  * @package: BNS Theme Add-Ins 
  * @version: 0.1
  * @date: September 29, 2011
- * @revised: October 6, 2011
+ * @revised: October 7, 2011
  *  
  **/
 add_action('admin_menu', 'bns_theme_menu_item');
@@ -109,7 +108,7 @@ if ( ! function_exists( 'bns_theme_menu_item' ) ) {
           ? 'Version Warning'
           : 'Version Checked';
       } else {
-        $bns_menu_title = __( 'Support', 'bns-theme-add-ins' );
+        $bns_menu_title = 'Support';
       }
       
       // Set variable for future usage ... globalize if needed.
