@@ -23,7 +23,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Initial Release: September 30, 2011  
  * 
  * @version: 0.2
- * @last revision: October 6, 2011
+ * @date: October 17, 2011
  * 
  * ----         
  *  
@@ -59,7 +59,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Add additional useful header data fields
  *
  * @package: BNS Theme Add-Ins
- * @version: 0.1
+ * @since: 0.1
  * @date: September 17, 2011
  * 
  * NB: BNS Extra Theme Headers may become deprecated if the following core trac
@@ -80,9 +80,9 @@ if ( ! function_exists( 'bns_extra_theme_headers' ) ){
  * Check Template Version of Child-Theme versus Parent-Theme version
  *
  * @package: BNS Theme Add-Ins 
- * @version: 0.1
+ * @since: 0.1
  * @date: September 29, 2011
- * @revised: October 7, 2011
+ * @revised: 0.2    October 7, 2011
  *  
  **/
 add_action('admin_menu', 'bns_theme_menu_item');
@@ -175,9 +175,9 @@ if ( ! function_exists( 'bns_version_issue' ) ) {
  * Include menu item to display theme readme text 
  * 
  * @package: BNS Theme Add-Ins
- * @version: 0.1
+ * @since: 0.1
  * @date: September 30, 2011
- * @revised: October 6, 2011
+ * @revised: 0.2    October 6, 2011
  * 
  * Requirement: `readme.txt` MUST exist *in* the Theme root directory/folder!
  *  
@@ -228,9 +228,9 @@ if ( ! function_exists( 'bns_readme_text' ) ) {
  * Include menu item to display theme readme text
  * 
  * @package: BNS Theme Add-Ins
- * @version: 0.1
+ * @since: 0.1
  * @date: September 30, 2011
- * @revised: October 6, 2011
+ * @revised: 0.2    October 6, 2011
  * 
  * Requirement: `changelog.txt` MUST exist *in* the Theme root directory/folder!
  *  
@@ -281,13 +281,13 @@ if ( ! function_exists( 'bns_changelog_text' ) ) {
  * Make available for translation
  * 
  * @package: BNS Theme Add-Ins
- * @version: 0.1
+ * @since: 0.1
  * @date: September 28, 2011
- * @revised: October 7, 2011
+ * @revised: 0.2    October 7, 2011
  *
  * Note: Translation files are expected to be found in the plugin root folder / directory.
  */
 load_plugin_textdomain( 'bns-theme-add-ins' );
 // End: BNS Plugin TextDomain
 ?>
-<?php /* Last revised October 7, 2011 v0.2 */ ?>
+<?php /* Last revised October 19, 2011 v0.2 */ ?>
