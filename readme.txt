@@ -1,7 +1,7 @@
 === BNS Theme Add-Ins ===
 Contributors: cais
 Donate link: http://buynowshop.com
-Tags: admin, readme, changelog, child-themes 
+Tags: admin, readme, changelog, child-themes
 Requires at least: 3.0
 Tested up to: 3.3
 Stable tag: 0.2
@@ -77,8 +77,9 @@ Please stay current with your WordPress installation, your active theme, and you
 = Version 0.2 =
 * Change $bns_textdomain to $bns_lower_case
 * Remove `BNS Child-Theme TextDomain` and i18n (translation) support
-* Correct `textdomain` issues and re-work the `BNS Child-Theme TextDomain` into `BNS Plugin TextDomain`
 * Add `BNS Plugin TextDomain` and i18n (translation) support specifically for 'bns-theme-add-ins'
+* Correct `textdomain` issues and re-work the `BNS Child-Theme TextDomain` into `BNS Plugin TextDomain`
+* i18n improvements in 'Readme Menu' and 'Changelog Menu' as well as change CSS containers from `id` to `class`
 * Minor inline documentation edits
 
 = Version 0.1.1 =

@@ -23,7 +23,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Initial Release: September 30, 2011  
  * 
  * @version: 0.2
- * @date: October 17, 2011
+ * @date: October 21, 2011
  * 
  * ----         
  *  
@@ -177,7 +177,7 @@ if ( ! function_exists( 'bns_version_issue' ) ) {
  * @package: BNS Theme Add-Ins
  * @since: 0.1
  * @date: September 30, 2011
- * @revised: 0.2    October 6, 2011
+ * @revised: 0.2    October 21, 2011
  * 
  * Requirement: `readme.txt` MUST exist *in* the Theme root directory/folder!
  *  
@@ -212,7 +212,7 @@ if ( ! function_exists( 'bns_readme_text' ) ) {
         // Loop through our array, show HTML source as HTML source
         $readme_text = '';
         foreach ($text_lines as $text) {
-          $readme_text .= sprintf( __( '<span id="' . $bns_lower_case . '-readme-text">%1$s</span>', 'bns-theme-add-ins' ), $text ) . "<br />\n";
+            $readme_text .= sprintf( __( '<span class="%1$s-readme-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $text ) . "<br />\n";
         }
         echo $readme_text;
       } else {
@@ -230,7 +230,7 @@ if ( ! function_exists( 'bns_readme_text' ) ) {
  * @package: BNS Theme Add-Ins
  * @since: 0.1
  * @date: September 30, 2011
- * @revised: 0.2    October 6, 2011
+ * @revised: 0.2    October 21, 2011
  * 
  * Requirement: `changelog.txt` MUST exist *in* the Theme root directory/folder!
  *  
@@ -265,7 +265,7 @@ if ( ! function_exists( 'bns_changelog_text' ) ) {
         // Loop through our array, show HTML source as HTML source
         $changelog_text = '';
         foreach ($text_lines as $text) {
-          $changelog_text .= sprintf( __( '<span id="' . $bns_lower_case . '-changelog-text">%1$s</span>', 'bns-theme-add-ins' ), $text ) . "<br />\n";
+            $changelog_text .= sprintf( __( '<span class="%1$s-changelog-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $text ) . "<br />\n";
         }
         echo $changelog_text;
       } else {
