@@ -32,17 +32,20 @@ If you need more help, please read this article for further assistance: http://w
 == Frequently Asked Questions ==
 Q: What does this plugin do?
 A: There are currently several functions this plugin provides:
- 
+
  * Add `BNS Extra Theme Headers`
  * Add `BNS Theme Support`
  * Add `BNS Readme Menu Item`
- * Add `BNS Changelog Menu Item`  
+ * Add `BNS Changelog Menu Item`
  * Add `BNS Plugin TextDomain` and i18n (translation) support specifically for 'bns-theme-add-ins'
-  
+
 These functions make use of the (Child-)Theme name to preface menu items.
 
 Q: Where can I get support for this plugin?
 A: Feel free to visit the plugin home page: http://buynowshop.com/plugins/bns-theme-add-ins/ and leave a comment; or, feel free to use the Contact Us form here: http://BuyNowShop.com/contact-us/
+
+Q: What is the best format for the text files to be written in?
+A: Currently a standard text file is fine, although future versions may make use of 'markdown'. See this Wikipedia article for more information: http://en.wikipedia.org/wiki/Markdown. Also to note, ideally the WordPress 'markdown' parser will be used as well.
 
 == Screenshots ==
 * No screenshots currently available; you are welcome to make suggestions.
@@ -67,8 +70,13 @@ A: Feel free to visit the plugin home page: http://buynowshop.com/plugins/bns-th
 
   The license for this software can also likely be found here:
   http://www.gnu.org/licenses/gpl-2.0.html
-  
+
 * Please note, support may be available on the WordPress Support forums; but, it may be faster to visit http://buynowshop.com/plugins/bns-theme-add-ins/ and leave a comment with the issue you are experiencing.
+
+* This plugin utilizes three text files if included with the active theme, although these files are not required for the plugin to work correctly they will enhance its functionality if they exist:
+ * `readme.txt`
+ * `changelog.txt`
+ * `support.txt`
 
 == Upgrade Notice ==
 Please stay current with your WordPress installation, your active theme, and your plugins.
