@@ -34,7 +34,7 @@ Q: What does this plugin do?
 A: There are currently several functions this plugin provides:
  
  * Add `BNS Extra Theme Headers`
- * Add `BNS Child-Theme Version Control`
+ * Add `BNS Theme Support`
  * Add `BNS Readme Menu Item`
  * Add `BNS Changelog Menu Item`  
  * Add `BNS Plugin TextDomain` and i18n (translation) support specifically for 'bns-theme-add-ins'
@@ -80,6 +80,7 @@ Please stay current with your WordPress installation, your active theme, and you
 * Add `BNS Plugin TextDomain` and i18n (translation) support specifically for 'bns-theme-add-ins'
 * Correct `textdomain` issues and re-work the `BNS Child-Theme TextDomain` into `BNS Plugin TextDomain`
 * i18n improvements in 'Readme Menu' and 'Changelog Menu' as well as change CSS containers from `id` to `class`
+* Change `BNS Child-Theme Version Control` to `BNS Theme Support`; added functionality to read and display a `support.txt` file similar to the `readme` and `changelog` menu items.
 * Minor inline documentation edits
 
 = Version 0.1.1 =

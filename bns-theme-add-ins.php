@@ -23,7 +23,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Initial Release: September 30, 2011  
  * 
  * @version: 0.2
- * @date: October 21, 2011
+ * @date: October 22, 2011
  * 
  * ----         
  *  
@@ -76,13 +76,17 @@ if ( ! function_exists( 'bns_extra_theme_headers' ) ){
 }    
 // End: BNS Extra Theme Headers
 
-/* BNS Child-Theme Version Control
- * Check Template Version of Child-Theme versus Parent-Theme version
+/* BNS Theme Support
+ * Check Template Version of Child-Theme versus Parent-Theme version; and
+ * displays a default Theme support message, or reads a `support.txt` file and
+ * displays its contents.
  *
  * @package: BNS Theme Add-Ins 
  * @since: 0.1
  * @date: September 29, 2011
- * @revised: 0.2    October 7, 2011
+ * @revised: 0.2    October 22, 2011
+ *
+ * Formerly known as 'BNS Child-Theme Version Control'
  *  
  **/
 add_action('admin_menu', 'bns_theme_menu_item');
@@ -123,50 +127,59 @@ if ( ! function_exists( 'bns_theme_menu_item' ) ) {
 
 if ( ! function_exists( 'bns_version_issue' ) ) {
   function bns_version_issue() {
-      global $bns_menu_title;
-      global $bns_parent_theme_data;
-      global $bns_theme_data;
-      
-      if ( $bns_menu_title == 'Version Warning' ) {
-          
-        $text = '<br />';
-        $text .= '<div class="updated">';
-        $text .= '<h1>' . $bns_menu_title . '</h1>';
-        $text .= 'The "Template Version" of the ' . $bns_theme_data['Name'] . ' Child-Theme and the version of the ' . $bns_parent_theme_data['Name'] . ' Theme you have installed are not the same.';
-        $text .= '<br /><br />';    
-        $text .= 'Please note this version of the ' . $bns_theme_data['Name'] . ' Child-Theme was made for use with the ' . $bns_parent_theme_data['Name'] . ' (Parent-Theme) version: ' . $bns_theme_data['Template Version'];
-        $text .= '<br />';
-        $text .= '... and the version of ' . $bns_parent_theme_data['Name'] . ', the "Parent-Theme", you have installed is: ' . $bns_parent_theme_data['Version'];
-        $text .= '<br /><br />';
-        $text .= 'These version numbers should be the same, or you may experience unexpected results with the ' . $bns_theme_data['Name'] . ' Child-Theme.';
-        $text .= '<br /><br />';    
-        $text .= 'For more information or help, please feel free to visit the <a href="' . $bns_parent_theme_data['URI'] . '">' . $bns_parent_theme_data['Name'] . ' home page</a> or the <a href="' . $bns_theme_data['URI'] . '">' . $bns_theme_data['Name'] . ' home page</a>';
-        $text .= '<br /><br />';        
-        $text .= '</div><!-- .updated -->';
-        $text .= '<br />';
-        
-      } else {
-      
-        $text = '<br />';
-        $text .= '<h1>' . $bns_menu_title . '</h1>';
-        if ( is_child_theme() ) {        
-          $text .= 'The "Template Version" of the ' . $bns_theme_data['Name'] . ' Child-Theme appears to be the same as the ' . $bns_parent_theme_data['Name'] . ' "Parent-Theme Version" you have installed.';
-          $text .= '<br /><br />';        
-          $text .= 'The "Template Version" and "Parent-Theme Version" numbers should be the same, or you may experience unexpected results with the ' . $bns_theme_data['Name'] . ' Child-Theme.';
-          $text .= '<br /><br />';    
-          $text .= 'Thank you for keeping both themes up-to-date, or keeping both themes synchronized, as the case may be.';
-          $text .= '<br /><br />';
+        global $bns_lower_case;
+        global $bns_menu_title;
+        global $bns_parent_theme_data;
+        global $bns_theme_data;
+        global $text;
+
+        if ( $bns_menu_title == 'Version Warning' ) {
+            $text = '<br />';
+            $text .= '<div class="updated">';
+            $text .= '<h1>' . $bns_menu_title . '</h1>';
+            $text .= 'The "Template Version" of the ' . $bns_theme_data['Name'] . ' Child-Theme and the version of the ' . $bns_parent_theme_data['Name'] . ' Theme you have installed are not the same.';
+            $text .= '<br /><br />';
+            $text .= 'Please note this version of the ' . $bns_theme_data['Name'] . ' Child-Theme was made for use with the ' . $bns_parent_theme_data['Name'] . ' (Parent-Theme) version: ' . $bns_theme_data['Template Version'];
+            $text .= '<br />';
+            $text .= '... and the version of ' . $bns_parent_theme_data['Name'] . ', the "Parent-Theme", you have installed is: ' . $bns_parent_theme_data['Version'];
+            $text .= '<br /><br />';
+            $text .= 'These version numbers should be the same, or you may experience unexpected results with the ' . $bns_theme_data['Name'] . ' Child-Theme.';
+            $text .= '<br /><br />';
+            $text .= 'For more information or help, please feel free to visit the <a href="' . $bns_parent_theme_data['URI'] . '">' . $bns_parent_theme_data['Name'] . ' home page</a> or the <a href="' . $bns_theme_data['URI'] . '">' . $bns_theme_data['Name'] . ' home page</a>';
+            $text .= '<br /><br />';
+            $text .= '</div><!-- .updated -->';
+            $text .= '<br />';
+        } else {
+            $text = '<br />';
+            $text .= '<h1>' . $bns_menu_title . '</h1>';
+            if ( is_child_theme() ) {
+                $text .= 'The "Template Version" of the ' . $bns_theme_data['Name'] . ' Child-Theme appears to be the same as the ' . $bns_parent_theme_data['Name'] . ' "Parent-Theme Version" you have installed.';
+                $text .= '<br /><br />';
+                $text .= 'The "Template Version" and "Parent-Theme Version" numbers should be the same, or you may experience unexpected results with the ' . $bns_theme_data['Name'] . ' Child-Theme.';
+                $text .= '<br /><br />';
+                $text .= 'Thank you for keeping both themes up-to-date, or keeping both themes synchronized, as the case may be.';
+                $text .= '<br /><br />';
+            }
         }
-        $text .= 'For more information or help, please feel free to visit ';
-        if ( is_child_theme() ) {        
-          $text .= 'the <a href="' . $bns_parent_theme_data['URI'] . '">' . $bns_parent_theme_data['Name'] . ' home page</a> or ';
+
+        if ( is_readable( get_stylesheet_directory() . '/support.txt' ) ) {
+        // Get a file into an array.
+            $text_lines = file( get_stylesheet_directory_uri() . '/support.txt' );
+            // Loop through our array, show HTML source as HTML source
+            foreach ($text_lines as $text) {
+                $text .= sprintf( __( '<span class="%1$s-support-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $text ) . "<br />\n";
+            }
+        } else {
+            $text .= 'For more information or help, please feel free to visit ';
+            if ( is_child_theme() ) {
+                $text .= 'the <a href="' . $bns_parent_theme_data['URI'] . '">' . $bns_parent_theme_data['Name'] . ' home page</a> or ';
+            }
+            $text .= 'the <a href="' . $bns_theme_data['URI'] . '">' . $bns_theme_data['Name'] . ' home page</a>';
+            $text .= '<br /><br />';
         }
-        $text .= 'the <a href="' . $bns_theme_data['URI'] . '">' . $bns_theme_data['Name'] . ' home page</a>';
-        $text .= '<br /><br />';    
-      }        
-      
-      $text = sprintf( __( '%1$s', 'bns-theme-add-ins' ), '<span id="bns-child-theme-version-control-text">' . $text . '</span>' );
-      echo $text;
+
+        $text = sprintf( __( '%1$s', 'bns-theme-add-ins' ), '<span id="bns-child-theme-version-control-text">' . $text . '</span>' );
+        echo $text;
   }
 }
 /* End: BNS Child-Theme Version Control */
@@ -290,4 +303,4 @@ if ( ! function_exists( 'bns_changelog_text' ) ) {
 load_plugin_textdomain( 'bns-theme-add-ins' );
 // End: BNS Plugin TextDomain
 ?>
-<?php /* Last revised October 19, 2011 v0.2 */ ?>
+<?php /* Last revised October 22, 2011 v0.2 */ ?>
