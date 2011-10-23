@@ -83,6 +83,7 @@ Please stay current with your WordPress installation, your active theme, and you
 
 == Changelog ==
 = Version 0.2 =
+* Released Oct 22, 2011
 * Change $bns_textdomain to $bns_lower_case
 * Remove `BNS Child-Theme TextDomain` and i18n (translation) support
 * Add `BNS Plugin TextDomain` and i18n (translation) support specifically for 'bns-theme-add-ins'

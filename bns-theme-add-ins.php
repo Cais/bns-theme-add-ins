@@ -131,7 +131,6 @@ if ( ! function_exists( 'bns_version_issue' ) ) {
         global $bns_menu_title;
         global $bns_parent_theme_data;
         global $bns_theme_data;
-        global $text;
 
         if ( $bns_menu_title == 'Version Warning' ) {
             $text = '<br />';
