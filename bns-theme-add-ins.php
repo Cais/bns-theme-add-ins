@@ -131,6 +131,7 @@ if ( ! function_exists( 'bns_version_issue' ) ) {
         global $bns_menu_title;
         global $bns_parent_theme_data;
         global $bns_theme_data;
+        $text = '';
 
         if ( $bns_menu_title == 'Version Warning' ) {
             $text = '<br />';
@@ -148,7 +149,7 @@ if ( ! function_exists( 'bns_version_issue' ) ) {
             $text .= '<br /><br />';
             $text .= '</div><!-- .updated -->';
             $text .= '<br />';
-        } else {
+        } elseif ( $bns_menu_title == 'Version Checked' ) {
             $text = '<br />';
             $text .= '<h1>' . $bns_menu_title . '</h1>';
             if ( is_child_theme() ) {
@@ -159,29 +160,30 @@ if ( ! function_exists( 'bns_version_issue' ) ) {
                 $text .= 'Thank you for keeping both themes up-to-date, or keeping both themes synchronized, as the case may be.';
                 $text .= '<br /><br />';
             }
-        }
-
-        if ( is_readable( get_stylesheet_directory() . '/support.txt' ) ) {
-        // Get a file into an array.
-            $text_lines = file( get_stylesheet_directory_uri() . '/support.txt' );
-            // Loop through our array, show HTML source as HTML source
-            foreach ($text_lines as $text) {
-                $text .= sprintf( __( '<span class="%1$s-support-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $text ) . "<br />\n";
-            }
         } else {
-            $text .= 'For more information or help, please feel free to visit ';
-            if ( is_child_theme() ) {
-                $text .= 'the <a href="' . $bns_parent_theme_data['URI'] . '">' . $bns_parent_theme_data['Name'] . ' home page</a> or ';
+            if ( is_readable( get_stylesheet_directory() . '/support.txt' ) ) {
+            // Get a file into an array.
+                $text_lines = file( get_stylesheet_directory_uri() . '/support.txt' );
+                // Loop through our array, show HTML source as HTML source
+                $support_text = '';
+                foreach ($text_lines as $text) {
+                    $support_text .= sprintf( __( '<span class="%1$s-readme-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $text ) . "<br />\n";
+                }
+                $text .= $support_text;
+            } else {
+                $text .= 'For more information or help, please feel free to visit ';
+                if ( is_child_theme() ) {
+                    $text .= 'the <a href="' . $bns_parent_theme_data['URI'] . '">' . $bns_parent_theme_data['Name'] . ' home page</a> or ';
+                }
+                $text .= 'the <a href="' . $bns_theme_data['URI'] . '">' . $bns_theme_data['Name'] . ' home page</a>';
+                $text .= '<br /><br />';
             }
-            $text .= 'the <a href="' . $bns_theme_data['URI'] . '">' . $bns_theme_data['Name'] . ' home page</a>';
-            $text .= '<br /><br />';
         }
-
         $text = sprintf( __( '%1$s', 'bns-theme-add-ins' ), '<span id="bns-child-theme-version-control-text">' . $text . '</span>' );
         echo $text;
   }
 }
-/* End: BNS Child-Theme Version Control */
+/* End: BNS Theme Support */
 
 /* BNS Readme Menu Item
  * Include menu item to display theme readme text 

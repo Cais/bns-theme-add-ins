@@ -4,7 +4,7 @@ Donate link: http://buynowshop.com
 Tags: admin, readme, changelog, child-themes
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 0.2
+Stable tag: 0.2.1
 
 Extend the capabilities of WordPress Parent-Themes and Child-Themes.
 
@@ -82,6 +82,9 @@ A: Currently a standard text file is fine, although future versions may make use
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= Version 0.2.1 =
+* Fix `BNS Theme Support` logic and functionality
+
 = Version 0.2 =
 * Released Oct 22, 2011
 * Change $bns_textdomain to $bns_lower_case
