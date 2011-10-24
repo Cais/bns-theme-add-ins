@@ -3,7 +3,7 @@
 Plugin Name: BNS Theme Add-Ins
 Plugin URI: http://buynowshop.com/plugins/bns-theme-add-ins/
 Description: A collection of functions and code that can be used to extend the capabilities of WordPress Parent-Themes and Child-Themes.  
-Version: 0.2
+Version: 0.2.1
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
 License: GNU General Public License v2
