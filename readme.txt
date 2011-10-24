@@ -84,6 +84,7 @@ Please stay current with your WordPress installation, your active theme, and you
 == Changelog ==
 = Version 0.2.1 =
 * Fix `BNS Theme Support` logic and functionality
+* Correct inline documentation
 
 = Version 0.2 =
 * Released Oct 22, 2011

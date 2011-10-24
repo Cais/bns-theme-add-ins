@@ -15,15 +15,15 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * capabilities of WordPress Themes and Child-Themes.
  * 
  * Adds `BNS Extra Theme Headers`
- * Adds `BNS Child-Theme Version Control`
+ * Adds `BNS Theme Support`
  * Adds `BNS Readme Menu Item`
  * Adds `BNS Changelog Menu Item`
  * Adds `BNS Plugin TextDomain` and i18n (translation) support specifically for 'bns-theme-add-ins'
  * 
  * Initial Release: September 30, 2011  
  * 
- * @version: 0.2
- * @date: October 22, 2011
+ * @version: 0.2.1
+ * @date: October 24, 2011
  * 
  * ----         
  *  
@@ -165,11 +165,9 @@ if ( ! function_exists( 'bns_version_issue' ) ) {
             // Get a file into an array.
                 $text_lines = file( get_stylesheet_directory_uri() . '/support.txt' );
                 // Loop through our array, show HTML source as HTML source
-                $support_text = '';
-                foreach ($text_lines as $text) {
-                    $support_text .= sprintf( __( '<span class="%1$s-readme-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $text ) . "<br />\n";
+                foreach ($text_lines as $support_text) {
+                    $text .= sprintf( __( '<span class="%1$s-readme-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $support_text ) . "<br />\n";
                 }
-                $text .= $support_text;
             } else {
                 $text .= 'For more information or help, please feel free to visit ';
                 if ( is_child_theme() ) {
@@ -304,4 +302,4 @@ if ( ! function_exists( 'bns_changelog_text' ) ) {
 load_plugin_textdomain( 'bns-theme-add-ins' );
 // End: BNS Plugin TextDomain
 ?>
-<?php /* Last revised October 22, 2011 v0.2 */ ?>
+<?php /* Last revised October 24, 2011 v0.2.1 */ ?>
