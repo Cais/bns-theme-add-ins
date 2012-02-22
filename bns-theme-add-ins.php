@@ -3,9 +3,10 @@
 Plugin Name: BNS Theme Add-Ins
 Plugin URI: http://buynowshop.com/plugins/bns-theme-add-ins/
 Description: A collection of functions and code that can be used to extend the capabilities of WordPress Parent-Themes and Child-Themes.  
-Version: 0.2.1
+Version: 0.3-alpha
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
+Textdomain: bns-tai
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
@@ -19,15 +20,22 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Adds `BNS Readme Menu Item`
  * Adds `BNS Changelog Menu Item`
  * Adds `BNS Plugin TextDomain` and i18n (translation) support specifically for 'bns-theme-add-ins'
+ * Adds `BNS_Custom_Login` to redirect (default) 'login' to 'wp-admin'
  * 
  * Initial Release: September 30, 2011  
  * 
- * @version: 0.2.1
- * @date: October 24, 2011
+ * @version:    0.3
+ * @date:       February 22, 2012
  * 
- * ----         
- *  
- * Copyright 2011  Edward Caissie  (email : edward.caissie@gmail.com)
+ * @internal requires the theme use readme.txt
+ * @internal requires the theme use changelog.txt file
+ *
+ * @todo review and error check for file exists on 'readme.txt' and 'changelog.txt'
+ *
+ **/
+
+/**
+ * Copyright 2011-2012  Edward Caissie  (email : edward.caissie@gmail.com)
  *
  * BNS Theme Add-Ins is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 2, as
@@ -45,15 +53,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * 
  * The license for this software can also likely be found here:
  * http://www.gnu.org/licenses/gpl-2.0.html
- *
- * ----
- *     
- * Please Note: a readme.txt file and a changelog.txt file are required for the
- * code to work correctly. Failure to have these files in the root folder or
- * directory of the Theme may cause unexpected results and will most likely
- * cause errors to occur.
- * 
- **/   
+ */
 
 /* BNS Extra Theme Headers
  * Add additional useful header data fields
@@ -166,7 +166,7 @@ if ( ! function_exists( 'bns_version_issue' ) ) {
                 $text_lines = file( get_stylesheet_directory_uri() . '/support.txt' );
                 // Loop through our array, show HTML source as HTML source
                 foreach ($text_lines as $support_text) {
-                    $text .= sprintf( __( '<span class="%1$s-readme-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $support_text ) . "<br />\n";
+                    $text .= sprintf( __( '<span class="%1$s-readme-text">%2$s</span>', 'bns-tai' ), $bns_lower_case, $support_text ) . "<br />\n";
                 }
             } else {
                 $text .= 'For more information or help, please feel free to visit ';
@@ -177,7 +177,7 @@ if ( ! function_exists( 'bns_version_issue' ) ) {
                 $text .= '<br /><br />';
             }
         }
-        $text = sprintf( __( '%1$s', 'bns-theme-add-ins' ), '<span id="bns-child-theme-version-control-text">' . $text . '</span>' );
+        $text = sprintf( __( '%1$s', 'bns-tai' ), '<span id="bns-child-theme-version-control-text">' . $text . '</span>' );
         echo $text;
   }
 }
@@ -203,7 +203,7 @@ if ( ! function_exists( 'bns_readme_menu_item' ) ) {
       global $bns_theme_data;      
 
       add_theme_page( $bns_theme_data['Name'] . ' ' . 'README',
-                      $bns_theme_data['Name'] . ' ' . __( 'README', 'bns-theme-add-ins' ),
+                      $bns_theme_data['Name'] . ' ' . __( 'README', 'bns-tai' ),
                       'manage_options',
                       $bns_lower_case . '-readme',
                       'bns_readme_text'
@@ -256,7 +256,7 @@ if ( ! function_exists( 'bns_changelog_menu_item' ) ) {
       global $bns_theme_data;      
 
       add_theme_page( $bns_theme_data['Name'] . ' ' . 'Changelog',
-                      $bns_theme_data['Name'] . ' ' . __( 'Changelog', 'bns-theme-add-ins'),
+                      $bns_theme_data['Name'] . ' ' . __( 'Changelog', 'bns-tai'),
                       'manage_options',
                       $bns_lower_case . '-changelog',
                       'bns_changelog_text'
@@ -277,12 +277,12 @@ if ( ! function_exists( 'bns_changelog_text' ) ) {
         // Loop through our array, show HTML source as HTML source
         $changelog_text = '';
         foreach ($text_lines as $text) {
-            $changelog_text .= sprintf( __( '<span class="%1$s-changelog-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $text ) . "<br />\n";
+            $changelog_text .= sprintf( __( '<span class="%1$s-changelog-text">%2$s</span>', 'bns-tai' ), $bns_lower_case, $text ) . "<br />\n";
         }
         echo $changelog_text;
       } else {
         echo '<div class="updated"><h2>changelog.txt</h2>'
-          . sprintf( __( 'The %1$s "changelog.txt" file either does not exist or is not readable.', 'bns-theme-add-ins' ), $bns_theme_data['Name'] )
+          . sprintf( __( 'The %1$s "changelog.txt" file either does not exist or is not readable.', 'bns-tai' ), $bns_theme_data['Name'] )
           . '<br /></div>';        
       }
   }
@@ -299,7 +299,31 @@ if ( ! function_exists( 'bns_changelog_text' ) ) {
  *
  * Note: Translation files are expected to be found in the plugin root folder / directory.
  */
-load_plugin_textdomain( 'bns-theme-add-ins' );
+load_plugin_textdomain( 'bns-tai' );
 // End: BNS Plugin TextDomain
-?>
-<?php /* Last revised October 24, 2011 v0.2.1 */ ?>
+
+/**
+ * BNS Add Custom Login
+ * Add Custom URL Redirects to Your WordPress Dashboard Areas or Login Page
+ *
+ * Inspired by the following
+ * @link http://konstruktors.com/blog/wordpress/3529-custom-redirect-to-wordpress-login-dashboard/
+ *
+ * @package:    BNS Theme Add-Ins
+ * @since:      0.3
+ * @date:       February 22, 2012
+ *
+ * @param       $wp_rewrite
+ *
+ * @todo get this to work ... ?!!!
+ * @todo once working review attribution of code!
+ * @todo add option to change default 'login'
+ */
+function bns_add_custom_login( $wp_rewrite ) {
+        $login_rewrite = array(
+                            'login' => 'wp-admin'
+        );
+        $wp_rewrite->rules = $login_rewrite + $wp_rewrite->rules;
+}
+add_filter('generate_rewrite_rules', 'bns_add_custom_login');
+// End: BNS Add Custom Login

@@ -1,10 +1,10 @@
 === BNS Theme Add-Ins ===
 Contributors: cais
 Donate link: http://buynowshop.com
-Tags: admin, readme, changelog, child-themes
+Tags: admin, readme, changelog, child-themes, login
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 0.2.1
+Stable tag: 0.3
 
 Extend the capabilities of WordPress Parent-Themes and Child-Themes.
 
@@ -37,7 +37,8 @@ A: There are currently several functions this plugin provides:
  * Add `BNS Theme Support`
  * Add `BNS Readme Menu Item`
  * Add `BNS Changelog Menu Item`
- * Add `BNS Plugin TextDomain` and i18n (translation) support specifically for 'bns-theme-add-ins'
+ * Add `BNS Plugin TextDomain` and i18n (translation) support specifically for this plugin using 'bns-tai' as the textdomain
+ * Add `BNS_Custom_Login` to redirect default 'login' to 'wp-admin'
 
 These functions make use of the (Child-)Theme name to preface menu items.
 
@@ -82,6 +83,10 @@ A: Currently a standard text file is fine, although future versions may make use
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= Version 0.3 =
+* Add Custom URL Redirects to Your WordPress Dashboard Areas or Login Page
+* Change `textdomain` to use `bns-tia`
+
 = Version 0.2.1 =
 * Fix `BNS Theme Support` logic and functionality
 * Correct inline documentation
