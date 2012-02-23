@@ -20,12 +20,11 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Adds `BNS Readme Menu Item`
  * Adds `BNS Changelog Menu Item`
  * Adds `BNS Plugin TextDomain` and i18n (translation) support specifically for 'bns-theme-add-ins'
- * Adds `BNS_Custom_Login` to redirect (default) 'login' to 'wp-admin'
- * 
+ *
  * Initial Release: September 30, 2011  
  * 
  * @version:    0.3
- * @date:       February 22, 2012
+ * @date:       February 23, 2012
  * 
  * @internal requires the theme use readme.txt
  * @internal requires the theme use changelog.txt file
@@ -301,29 +300,3 @@ if ( ! function_exists( 'bns_changelog_text' ) ) {
  */
 load_plugin_textdomain( 'bns-tai' );
 // End: BNS Plugin TextDomain
-
-/**
- * BNS Add Custom Login
- * Add Custom URL Redirects to Your WordPress Dashboard Areas or Login Page
- *
- * Inspired by the following
- * @link http://konstruktors.com/blog/wordpress/3529-custom-redirect-to-wordpress-login-dashboard/
- *
- * @package:    BNS Theme Add-Ins
- * @since:      0.3
- * @date:       February 22, 2012
- *
- * @param       $wp_rewrite
- *
- * @todo get this to work ... ?!!!
- * @todo once working review attribution of code!
- * @todo add option to change default 'login'
- */
-function bns_add_custom_login( $wp_rewrite ) {
-        $login_rewrite = array(
-                            'login' => 'wp-admin'
-        );
-        $wp_rewrite->rules = $login_rewrite + $wp_rewrite->rules;
-}
-add_filter('generate_rewrite_rules', 'bns_add_custom_login');
-// End: BNS Add Custom Login

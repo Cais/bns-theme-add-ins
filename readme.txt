@@ -38,7 +38,6 @@ A: There are currently several functions this plugin provides:
  * Add `BNS Readme Menu Item`
  * Add `BNS Changelog Menu Item`
  * Add `BNS Plugin TextDomain` and i18n (translation) support specifically for this plugin using 'bns-tai' as the textdomain
- * Add `BNS_Custom_Login` to redirect default 'login' to 'wp-admin'
 
 These functions make use of the (Child-)Theme name to preface menu items.
 
@@ -52,7 +51,7 @@ A: Currently a standard text file is fine, although future versions may make use
 * No screenshots currently available; you are welcome to make suggestions.
 
 == Other Notes ==
-* Copyright 2011  Edward Caissie  (email : edward.caissie@gmail.com)
+* Copyright 2011-2012  Edward Caissie  (email : edward.caissie@gmail.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 2,
@@ -84,7 +83,6 @@ Please stay current with your WordPress installation, your active theme, and you
 
 == Changelog ==
 = Version 0.3 =
-* Add Custom URL Redirects to Your WordPress Dashboard Areas or Login Page
 * Change `textdomain` to use `bns-tia`
 
 = Version 0.2.1 =
