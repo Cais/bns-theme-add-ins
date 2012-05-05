@@ -2,7 +2,7 @@
 Contributors: cais
 Donate link: http://buynowshop.com
 Tags: admin, readme, changelog, child-themes, login
-Requires at least: 3.4-beta1
+Requires at least: 3.4
 Tested up to: 3.4
 Stable tag: 0.3
 
