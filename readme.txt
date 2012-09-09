@@ -1,9 +1,9 @@
 === BNS Theme Add-Ins ===
 Contributors: cais
 Donate link: http://buynowshop.com
-Tags: admin, readme, changelog, child-themes, login
+Tags: admin, readme, changelog, child-themes, login, plugin-only
 Requires at least: 3.4
-Tested up to: 3.4
+Tested up to: 3.4.2
 Stable tag: 0.3
 
 Extend the capabilities of WordPress Parent-Themes and Child-Themes.
@@ -85,6 +85,7 @@ Please stay current with your WordPress installation, your active theme, and you
 = Version 0.3 =
 * Change `textdomain` to use `bns-tia`
 * Replace `get_theme_data` deprecated at WordPress version 3.4-beta1
+* Add optional enqueue of custom CSS file
 
 = Version 0.2.1 =
 * Fix `BNS Theme Support` logic and functionality

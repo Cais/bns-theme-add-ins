@@ -304,3 +304,21 @@ if ( ! function_exists( 'bns_changelog_text' ) ) {
  */
 load_plugin_textdomain( 'bns-tai' );
 // End: BNS Plugin TextDomain
+
+/**
+ * Add Custom Styles
+ * Allows for custom (script or stylesheet to be added by end-user.
+ *
+ * @package BNS_Theme_Add_Ins
+ * @since   0.3
+ *
+ * @internal Requires 'bns-custom-style.css' file to be readable; this may
+ * require the file be uploaded to the active theme folder.
+ */
+function BNS_Add_Styles() {
+    /* Enqueue Styles */
+    if ( is_readable( get_stylesheet_directory() . '/bns-add-custom-style.css' ) ) {
+        wp_enqueue_style( 'BNS-Add-Custom-Style', get_stylesheet_directory_uri() . '/bns-add-custom-style.css', array(), '0.3', 'screen' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'BNS_Add_Styles' );
