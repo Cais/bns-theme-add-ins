@@ -8,7 +8,7 @@ Stable tag: 0.4
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
-Extend the capabilities of WordPress Parent-Themes and Child-Themes.
+Extend the capabilities of WordPress Parent-Themes and Child-Themes
 
 == Description ==
 
