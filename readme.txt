@@ -3,8 +3,8 @@ Contributors: cais
 Donate link: http://buynowshop.com
 Tags: admin, readme, changelog, child-themes, login
 Requires at least: 3.4
-Tested up to: 3.5-alpha
-Stable tag: 0.4
+Tested up to: 3.5
+Stable tag: 0.5
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -83,6 +83,13 @@ A: Currently a standard text file is fine, although future versions may make use
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= Version 0.5 =
+* Added filter 'bns_tai_version_issue'
+* Added filter 'bns_tai_readme_text'
+* Added filter 'bns_tai_changelog_text'
+* Removed 'load_textdomain' as redundant
+* PHPDocs updated
+
 = Version 0.4 =
 * Implement OOP style class coding
 * Refactor function names within class
