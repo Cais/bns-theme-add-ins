@@ -3,7 +3,7 @@
 Plugin Name: BNS Theme Add-Ins
 Plugin URI: http://buynowshop.com/plugins/bns-theme-add-ins/
 Description: A collection of functions and code that can be used to extend the capabilities of WordPress Parent-Themes and Child-Themes.  
-Version: 0.5
+Version: 0.6
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
 Textdomain: bns-tai
@@ -27,7 +27,7 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @internal REQUIRES the theme use readme.txt
  * @internal REQUIRES the theme use changelog.txt
  *
- * Copyright 2011-2012  Edward Caissie  (email : edward.caissie@gmail.com)
+ * Copyright 2011-2013  Edward Caissie  (email : edward.caissie@gmail.com)
  *
  * BNS Theme Add-Ins is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License version 2, as
@@ -48,6 +48,10 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
  * @version 0.5
  * @date    November 13, 2012
+ *
+ * @version 0.6
+ * @date    February 15, 2013
+ * Added code block termination comments
  */
 
 class BNS_Theme_Add_Ins {
@@ -78,12 +82,28 @@ class BNS_Theme_Add_Ins {
      *
      * @internal Extra Theme Headers may become deprecated if the following core
      * trac ticket is approved: http://core.trac.wordpress.org/ticket/16395
-     **/
+     *
+     * @version 0.6
+     * @date    February 15, 2013
+     * Added 'WordPress Tested Version' and 'WordPress Required Version' support
+     */
     function extra_theme_headers( $headers ) {
-        if ( ! in_array( 'Template Version', $headers ) )
+        if ( ! in_array( 'WordPress Tested Version', $headers ) ) {
+            $headers[] = 'WordPress Tested Version';
+        } /** End if - not in array */
+
+        if ( ! in_array( 'WordPress Required Version', $headers ) ) {
+            $headers[] = 'WordPress Required Version';
+        } /** End if - not in array */
+
+        if ( ! in_array( 'Template Version', $headers ) ) {
             $headers[] = 'Template Version';
+        } /** End if - not in array */
+
         return $headers;
-    }
+
+    } /** End function - extra theme headers */
+
 
     /**
      * Support Menu Item
@@ -97,7 +117,7 @@ class BNS_Theme_Add_Ins {
      * @version 0.2
      * @date    October 22, 2011
      * Formerly known as 'BNS Child-Theme Version Control'
-     **/
+     */
     function support_menu_item() {
 
         /** Globalize these variables for use in other functions */
@@ -120,8 +140,10 @@ class BNS_Theme_Add_Ins {
                     : 'Version Checked';
 
         } else {
+
             $bns_menu_title = 'Support';
-        }
+
+        } /** End if - is child theme */
 
         /** Set variable for future usage ... globalize if needed. */
         add_theme_page(
@@ -129,10 +151,11 @@ class BNS_Theme_Add_Ins {
             $bns_theme_data->get( 'Name' ) . ' ' . $bns_menu_title,
             'manage_options',
             'bns-theme-version-control',
-            array( $this, 'version_issue')
+            array( $this, 'version_issue' )
         );
 
-    }
+    } /** End function - support menu item */
+
 
     /**
      * Version Issue
@@ -189,7 +212,7 @@ class BNS_Theme_Add_Ins {
                 $text .= 'Thank you for keeping both themes up-to-date, or keeping both themes synchronized, as the case may be.';
                 $text .= '<br /><br />';
 
-            }
+            } /** End if - is child theme */
 
         } else {
 
@@ -197,26 +220,30 @@ class BNS_Theme_Add_Ins {
 
                 /** Get a file into an array. */
                 $text_lines = file( get_stylesheet_directory_uri() . '/support.txt' );
+
                 /** Loop through our array, show HTML source as HTML source */
-                foreach ($text_lines as $support_text) {
+                foreach ( $text_lines as $support_text ) {
                     $text .= sprintf( __( '<span class="%1$s-readme-text">%2$s</span>', 'bns-tai' ), $bns_lower_case, $support_text ) . "<br />\n";
-                }
+                } /** End foreach */
 
             } else {
 
                 $text .= 'For more information or help, please feel free to visit ';
+
                 if ( is_child_theme() ) {
                     $text .= 'the <a href="' . $bns_parent_theme_data['ThemeURI'] . '">' . $bns_parent_theme_data['Name'] . ' home page</a> or ';
-                }
+                } /** End if - is child theme */
+
                 $text .= 'the <a href="' . $bns_theme_data['ThemeURI'] . '">' . $bns_theme_data['Name'] . ' home page</a>';
                 $text .= '<br /><br />';
 
-            }
+            } /** End if - is readable */
         }
 
         echo apply_filters( 'bns_tai_version_issue', sprintf( __( '%1$s', 'bns-tai' ), '<span id="bns-child-theme-version-control-text">' . $text . '</span>' ) );
 
-    }
+    } /** End function - version issue */
+
 
     /**
      * Readme Menu Item
@@ -239,9 +266,11 @@ class BNS_Theme_Add_Ins {
             $bns_theme_data['Name'] . ' ' . __( 'README', 'bns-tai' ),
             'manage_options',
             $bns_lower_case . '-readme',
-            array( $this, 'readme_text')
+            array( $this, 'readme_text' )
         );
-    }
+
+    } /** End function - readme menu item */
+
 
     /**
      * Readme Text
@@ -270,18 +299,23 @@ class BNS_Theme_Add_Ins {
 
             /** Loop through our array, show HTML source as HTML source */
             $readme_text = '';
+
             foreach ( $text_lines as $text ) {
                 $readme_text .= sprintf( __( '<span class="%1$s-readme-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $text ) . "<br />\n";
-            }
+            } /** End foreach */
 
             echo apply_filters( 'bns_tai_readme_text', $readme_text );
 
         } else {
+
             echo '<div class="updated"><h2>readme.txt</h2>'
                     . sprintf( __( 'The %1$s "readme.txt" file either does not exist or is not readable.', 'bns-theme-add-ins' ), $bns_theme_data['Name'] )
                     . '<br /></div>';
-        }
-    }
+
+        } /** End if - is readable */
+
+    } /** End function - readme text */
+
 
     /**
      * BNS Changelog Menu Item
@@ -300,12 +334,14 @@ class BNS_Theme_Add_Ins {
 
         add_theme_page(
             $bns_theme_data['Name'] . ' ' . 'Changelog',
-            $bns_theme_data['Name'] . ' ' . __( 'Changelog', 'bns-tai'),
+            $bns_theme_data['Name'] . ' ' . __( 'Changelog', 'bns-tai' ),
             'manage_options',
             $bns_lower_case . '-changelog',
-            array( $this, 'changelog_text')
+            array( $this, 'changelog_text' )
         );
-    }
+
+    } /** End function - changelog menu item */
+
 
     /**
      * Changelog Text
@@ -341,12 +377,18 @@ class BNS_Theme_Add_Ins {
             echo apply_filters( 'bns_tai_changelog_text', $changelog_text );
 
         } else {
+
             echo '<div class="updated"><h2>changelog.txt</h2>'
                     . sprintf( __( 'The %1$s "changelog.txt" file either does not exist or is not readable.', 'bns-tai' ), $bns_theme_data['Name'] )
                     . '<br /></div>';
-        }
 
-    }
+        } /** End if - is readable */
 
-}
+    } /** End function - changelog text */
+
+
+} /** End class */
+
+
+/** @var $bns_theme_add_ins - instantiate the class */
 $bns_theme_add_ins = new BNS_Theme_Add_Ins();

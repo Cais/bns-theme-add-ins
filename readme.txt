@@ -3,8 +3,8 @@ Contributors: cais
 Donate link: http://buynowshop.com
 Tags: admin, readme, changelog, child-themes, login
 Requires at least: 3.4
-Tested up to: 3.5
-Stable tag: 0.5
+Tested up to: 3.5.1
+Stable tag: 0.6
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -52,7 +52,7 @@ A: Currently a standard text file is fine, although future versions may make use
 * No screenshots currently available; you are welcome to make suggestions.
 
 == Other Notes ==
-* Copyright 2011-2012  Edward Caissie  (email : edward.caissie@gmail.com)
+* Copyright 2011-2013  Edward Caissie  (email : edward.caissie@gmail.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License version 2,
@@ -83,6 +83,11 @@ A: Currently a standard text file is fine, although future versions may make use
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= Version 0.6 =
+* Release February 2013
+* Added code block termination comments
+* Added 'WordPress Tested Version' and 'WordPress Required Version' support
+
 = Version 0.5 =
 * Added filter 'bns_tai_version_issue'
 * Added filter 'bns_tai_readme_text'
