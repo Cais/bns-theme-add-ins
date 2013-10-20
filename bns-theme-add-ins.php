@@ -3,7 +3,7 @@
 Plugin Name: BNS Theme Add-Ins
 Plugin URI: http://buynowshop.com/plugins/bns-theme-add-ins/
 Description: A collection of functions and code that can be used to extend the capabilities of WordPress Parent-Themes and Child-Themes.  
-Version: 0.6
+Version: 0.7
 Author: Edward Caissie
 Author URI: http://edwardcaissie.com/
 Textdomain: bns-tai
@@ -52,12 +52,26 @@ License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * @version 0.6
  * @date    February 15, 2013
  * Added code block termination comments
+ *
+ * @version 0.7
+ * @date    October 20, 2013
  */
 
 class BNS_Theme_Add_Ins {
 
     /** Constructor */
     function __construct(){
+
+        /**
+         * Check installed WordPress version for compatibility
+         * @internal    Requires WordPress version 3.5
+         * @internal    @uses wp_html_allowed_html
+         */
+        global $wp_version;
+        $exit_message = 'BNS Theme Add Ins requires WordPress version 3.5 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please Update!</a>';
+        if ( version_compare( $wp_version, "3.5", "<" ) ) {
+            exit ( $exit_message );
+        } /** End if */
 
         /** Add Extra Theme Headers */
         add_filter( 'extra_theme_headers', array( $this, 'extra_theme_headers' ) );
@@ -164,14 +178,21 @@ class BNS_Theme_Add_Ins {
      * @since   0.1
      *
      * @uses    apply_filters
+     * @uses    esc_html__
      * @uses    get_stylesheet_directory
      * @uses    get_stylesheet_directory_uri
      * @uses    is_child_theme
+     * @uses    wp_kses
+     * @uses    wp_kses_allowed_html
      *
      * @version 0.5
      * @date    November 13, 2012
      * Added filter 'bns_tai_version_issue'
      * PHPDocs updated
+     *
+     * @version 0.7
+     * @date    October 20, 2013
+     * Added sanitation to string outputs
      */
     function version_issue() {
 
@@ -223,7 +244,7 @@ class BNS_Theme_Add_Ins {
 
                 /** Loop through our array, show HTML source as HTML source */
                 foreach ( $text_lines as $support_text ) {
-                    $text .= sprintf( __( '<span class="%1$s-readme-text">%2$s</span>', 'bns-tai' ), $bns_lower_case, $support_text ) . "<br />\n";
+                    $text .= sprintf( esc_html__( '<span class="%1$s-readme-text">%2$s</span>', 'bns-tai' ), $bns_lower_case, $support_text ) . "<br />\n";
                 } /** End foreach */
 
             } else {
@@ -239,6 +260,9 @@ class BNS_Theme_Add_Ins {
 
             } /** End if - is readable */
         }
+
+        /** @var $text - clean up the text string being passed */
+        $text = wp_kses( $text, wp_kses_allowed_html( 'post' ) );
 
         echo apply_filters( 'bns_tai_version_issue', sprintf( __( '%1$s', 'bns-tai' ), '<span id="bns-child-theme-version-control-text">' . $text . '</span>' ) );
 
@@ -279,13 +303,20 @@ class BNS_Theme_Add_Ins {
      * @since   0.1
      *
      * @uses    apply_filters
+     * @uses    esc_html__
      * @uses    get_stylesheet_directory
      * @uses    get_stylesheet_directory_uri
+     * @uses    wp_kses
+     * @uses    wp_kses_allowed_html
      *
      * @version 0.5
      * @date    November 13, 2012
      * Added filter 'bns_tai_readme_text'
      * PHPDocs updates
+     *
+     * @version 0.7
+     * @date    October 20, 2013
+     * Added sanitation to string outputs
      */
     function readme_text() {
 
@@ -301,8 +332,11 @@ class BNS_Theme_Add_Ins {
             $readme_text = '';
 
             foreach ( $text_lines as $text ) {
-                $readme_text .= sprintf( __( '<span class="%1$s-readme-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $text ) . "<br />\n";
+                $readme_text .= sprintf( esc_html__( '<span class="%1$s-readme-text">%2$s</span>', 'bns-theme-add-ins' ), $bns_lower_case, $text ) . "<br />\n";
             } /** End foreach */
+
+            /** @var $readme_text - clean up the text string being passed */
+            $readme_text = wp_kses( $readme_text, wp_kses_allowed_html( 'post' ) );
 
             echo apply_filters( 'bns_tai_readme_text', $readme_text );
 
@@ -350,13 +384,20 @@ class BNS_Theme_Add_Ins {
      * @since   0.1
      *
      * @uses    apply_filters
+     * @uses    esc_html__
      * @uses    get_stylesheet_directory
      * @uses    get_stylesheet_directory_uri
+     * @uses    wp_kses
+     * @uses    wp_kses_allowed_html
      *
      * @version 0.5
      * @date    November 13, 2012
      * Added filter 'bns_tai_changelog_text'
      * PHPDocs updates
+     *
+     * @version 0.7
+     * @date    October 20, 2013
+     * Added sanitation to string outputs
      */
     function changelog_text() {
 
@@ -371,8 +412,11 @@ class BNS_Theme_Add_Ins {
             /** Loop through our array, show HTML source as HTML source */
             $changelog_text = '';
             foreach ($text_lines as $text) {
-                $changelog_text .= sprintf( __( '<span class="%1$s-changelog-text">%2$s</span>', 'bns-tai' ), $bns_lower_case, $text ) . "<br />\n";
+                $changelog_text .= sprintf( esc_html__( '<span class="%1$s-changelog-text">%2$s</span>', 'bns-tai' ), $bns_lower_case, $text ) . "<br />\n";
             }
+
+            /** @var $changelog_text - clean up the text string being passed */
+            $changelog_text = wp_kses( $changelog_text, wp_kses_allowed_html( 'post' ) );
 
             echo apply_filters( 'bns_tai_changelog_text', $changelog_text );
 

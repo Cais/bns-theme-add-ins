@@ -2,9 +2,9 @@
 Contributors: cais
 Donate link: http://buynowshop.com
 Tags: admin, readme, changelog, child-themes, login
-Requires at least: 3.4
-Tested up to: 3.5.1
-Stable tag: 0.6
+Requires at least: 3.5
+Tested up to: 3.7
+Stable tag: 0.7
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -83,6 +83,12 @@ A: Currently a standard text file is fine, although future versions may make use
 Please stay current with your WordPress installation, your active theme, and your plugins.
 
 == Changelog ==
+= Version 0.7 =
+* Released October 2013
+* Added sanitation to string outputs
+* Added version check to insure plugin functions correctly
+* Updated WordPress version requirements to 3.5
+
 = Version 0.6 =
 * Release February 2013
 * Added code block termination comments
